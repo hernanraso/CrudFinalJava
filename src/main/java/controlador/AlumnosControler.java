@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.alumnos;
 import modelo.alumnosDAO;
 
 /**
@@ -43,7 +44,7 @@ public class AlumnosControler extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException 
+    throws ServletException, IOException 
     {
         alumnosDAO alumnosDao=new alumnosDAO();
         String accion;
@@ -52,10 +53,64 @@ public class AlumnosControler extends HttpServlet {
         
         if(accion==null||accion.isEmpty())
         {
+            dispatcher = request.getRequestDispatcher("vistas/alumnos.jsp");
+           
+        }
+            
+        
+         else if(accion.equals("modificar"))
+        {
+           dispatcher=request.getRequestDispatcher("vistas/modificar.jsp");
+           
+           
+        }
+           
+                
+        else if(accion.equals("actualizar"))
+        {
+            int id=Integer.parseInt(request.getParameter("id"));
+            String nombre = request.getParameter("nombre");
+            String apellido = request.getParameter("apellido");
+            String mail = request.getParameter("mail");
+            alumnos alumno=new alumnos(id,nombre,apellido,mail);
+            alumnosDao.actualizaralumno(alumno);
+            
+           dispatcher=request.getRequestDispatcher("vistas/alumnos.jsp");
+           
+           
+        }
+        
+        
+        else if(accion.equals("eliminar"))
+        {
+            int id=Integer.parseInt(request.getParameter("id"));
+            alumnosDao.eliminaralumno(id);
             dispatcher=request.getRequestDispatcher("vistas/alumnos.jsp");
         }
         
-        dispatcher.forward(request, response);
+        else if(accion.equals("nuevo"))
+        {
+            dispatcher=request.getRequestDispatcher("vistas/nuevo.jsp");
+        }
+        
+        else if(accion.equals("insert"))
+        {
+            String nombre=request.getParameter("nombre");
+            String apellido=request.getParameter("apellido");
+            String mail=request.getParameter("mail");
+            alumnos alumno=new alumnos (0,nombre,apellido,mail);
+            alumnosDao.insertaralumno(alumno);
+                
+            dispatcher=request.getRequestDispatcher("vistas/alumnos.jsp");
+               
+        }
+                
+        else
+        {
+            dispatcher=request.getRequestDispatcher("vistas/alumnos.jsp");
+                
+        }
+         dispatcher.forward(request,response);
     }
 
     /**

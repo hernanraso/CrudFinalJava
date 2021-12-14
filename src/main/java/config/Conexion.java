@@ -31,7 +31,7 @@ public class Conexion
     }
     
 
-
+/*
 public static void main(String[] args) throws SQLException
 {
     Connection conexion=null;
@@ -55,4 +55,5 @@ public static void main(String[] args) throws SQLException
     }
     
 }
+*/
 }

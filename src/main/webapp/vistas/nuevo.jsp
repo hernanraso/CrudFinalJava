@@ -17,6 +17,21 @@
 
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="https://portillonancy.com/assets/img/portfolio/codoacodo.png" alt="" width="130" height=84" class="d-inline-block align-text-top"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+        <a class="nav-link" href="alumnos.jsp">Alumnos</a>
+        <a class="nav-link" href="nuevo.jsp">Cargar Alumno</a>
+      </div>
+    </div>
+  </div>
+</nav>
         <div class="container">
             <h1 class="text-center">Añadir Alumno</h1>
                 <div class="row"></div>
@@ -43,6 +58,14 @@
                 </form>
             
         </div>
+        
+        <footer style="position: absolute; bottom: 0; width: 100%; height: 15%" class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+      <h5 class="text-center" style="color: white">Alumno Hernan Raso</h5>
+      <a style="color: white" href="contacto.html" >CONTACTO</a>
+      <a style="color: white">Copyright Hernan Raso</a>
+</footer>
+        
         
         
         

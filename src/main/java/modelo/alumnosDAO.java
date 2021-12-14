@@ -31,11 +31,11 @@ public class alumnosDAO
         List<alumnos> lista=new ArrayList<>();
         try 
         {
-            ps=conexion.prepareStatement("SELECT * FROM alumnos");
+            ps=conexion.prepareStatement("SELECT id,nombre,apellido,mail FROM alumnos");
             rs=ps.executeQuery();
             while(rs.next()) 
             {
-                String id=rs.getString("id");
+                int id=rs.getInt("id");
                 String nombre=rs.getString("nombre");
                 String apellido=rs.getString("apellido");
                 String mail=rs.getString("mail");
@@ -59,12 +59,12 @@ public class alumnosDAO
         alumnos alumno=null;
         try 
         {
-            ps=conexion.prepareStatement("SELECT * FROM alumnos WHERE id=?");
+            ps=conexion.prepareStatement("SELECT id,nombre,apellido,mail FROM alumnos WHERE id=?");
             ps.setInt(1, _id);
             rs=ps.executeQuery();
             while(rs.next()) 
             {
-                String id=rs.getString("id");
+                int id=rs.getInt("id");
                 String nombre=rs.getString("nombre");
                 String apellido=rs.getString("apellido");
                 String mail=rs.getString("mail");
@@ -82,14 +82,12 @@ public class alumnosDAO
         return null;
     }
     
-    public boolean insertaralumno(alumnos alumno) throws SQLException
+    public boolean insertaralumno(alumnos alumno)
     {
-        
-        
-        
+        PreparedStatement ps;
         try 
         {
-            PreparedStatement ps;
+            
             ps=conexion.prepareStatement("INSERT INTO alumnos(nombre,apellido,mail) VALUES (?,?,?)");
             ps.setString(1, alumno.getNombre());
             ps.setString(2, alumno.getApellido());
